@@ -46,15 +46,6 @@ async function run() {
     const changeStream = taskCollection.watch();
 
     // Stream for real-time updates
-    // changeStream.on('change', change => {
-    //   if (change) {
-    //     console.log(change.fullDocument);
-    //     io.emit('task', {
-    //       type: change.operationType,
-    //       data: change.fullDocument,
-    //     });
-    //   }
-    // });
 
     changeStream.on('change', change => {
       if (!change || !change.operationType) return;
