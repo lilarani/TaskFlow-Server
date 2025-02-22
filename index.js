@@ -105,10 +105,13 @@ async function run() {
       }
     });
 
-    app.get('/task', async (req, res) => {
+    app.get('/task/:email', async (req, res) => {
+      const userEmail = req.params.email;
+      const query = { email: userEmail };
+
       try {
         const result = await taskCollection
-          .find()
+          .find(query)
           .sort({ index: 1 }) // First sort by index, then by creation date
           .toArray();
 
