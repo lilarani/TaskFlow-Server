@@ -107,7 +107,7 @@ async function run() {
 
     app.get('/task/:email', async (req, res) => {
       const userEmail = req.params.email;
-      const query = { email: userEmail };
+      const query = { user: userEmail };
 
       try {
         const result = await taskCollection
